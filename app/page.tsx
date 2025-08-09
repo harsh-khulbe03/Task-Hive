@@ -85,17 +85,17 @@ export default function Home() {
             <h1 className="text-2xl font-bold text-gray-900">My Task Boards</h1>
             <Link
               href="/boards/new"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700"
             >
               Create New Board
             </Link>
           </div>
           {boards.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-500">You don't have any boards yet.</p>
+              <p className="text-gray-500">You do not have any boards yet.</p>
               <Link
                 href="/boards/new"
-                className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                className="mt-4 inline-block px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700"
               >
                 Create your first board
               </Link>
@@ -108,6 +108,7 @@ export default function Home() {
                   <button
                     onClick={() => handleDeleteBoard(board.id)}
                     className="absolute top-2 right-2 p-1 text-red-500 hover:text-red-700"
+                    aria-label="Delete board"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

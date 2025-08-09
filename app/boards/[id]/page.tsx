@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Navbar from "../../_components/Navbar";
 import TaskCard from "../../_components/TaskCard";
 import ProtectedRoute from "../../_components/ProtectedRoute";
 import { Board, Task } from "@/types";
 
-export default function BoardPage({ params }: { params: { id: string } }) {
+export default function BoardPage() {
+  const params = useParams<{ id: string }>();
   const [board, setBoard] = useState<Board | null>(null);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
@@ -173,7 +174,7 @@ export default function BoardPage({ params }: { params: { id: string } }) {
             <h1 className="text-2xl font-bold text-gray-900">{board.name}</h1>
             <button
               onClick={() => router.push("/")}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+              className="px-4 py-2 bg-violet-500 text-white rounded-md hover:bg-gray-300"
             >
               Back to Boards
             </button>
@@ -186,12 +187,12 @@ export default function BoardPage({ params }: { params: { id: string } }) {
                 value={newTaskTitle}
                 onChange={(e) => setNewTaskTitle(e.target.value)}
                 placeholder="Enter task title"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
                 onKeyPress={(e) => e.key === "Enter" && handleAddTask()}
               />
               <button
                 onClick={handleAddTask}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                className="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700"
               >
                 Add Task
               </button>

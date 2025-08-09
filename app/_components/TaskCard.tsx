@@ -36,12 +36,12 @@ export default function TaskCard({ task, onUpdate, onDelete }: TaskCardProps) {
             type="text"
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
-            className="w-full px-2 py-1 border border-gray-300 rounded-md"
+            className="w-full px-2 py-1 border border-gray-300 rounded-md text-black"
           />
           <textarea
             value={editedDescription}
             onChange={(e) => setEditedDescription(e.target.value)}
-            className="w-full px-2 py-1 border border-gray-300 rounded-md"
+            className="w-full px-2 py-1 border border-gray-300 rounded-md text-black"
             rows={3}
           />
           <div className="flex justify-end space-x-2">
@@ -53,7 +53,7 @@ export default function TaskCard({ task, onUpdate, onDelete }: TaskCardProps) {
             </button>
             <button
               onClick={handleSave}
-              className="px-3 py-1 text-sm text-white bg-blue-600 rounded-md"
+              className="px-3 py-1 text-sm text-white bg-violet-600 rounded-md"
             >
               Save
             </button>
@@ -73,7 +73,7 @@ export default function TaskCard({ task, onUpdate, onDelete }: TaskCardProps) {
                 type="checkbox"
                 checked={task.status === 'completed'}
                 onChange={handleStatusToggle}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500"
               />
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function TaskCard({ task, onUpdate, onDelete }: TaskCardProps) {
           <div className="mt-3 flex justify-end space-x-2">
             <button
               onClick={() => setIsEditing(true)}
-              className="text-sm text-blue-600 hover:text-blue-800"
+              className="text-sm text-violet-600 hover:text-violet-800"
             >
               Edit
             </button>

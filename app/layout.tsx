@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TaskBoards",
-  description: "Manage your tasks with TaskBoards",
+  title: "Task Hive",
+  description: "Manage your tasks with Task Hive",
 };
 
 export default function RootLayout({
