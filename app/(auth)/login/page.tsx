@@ -1,38 +1,38 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await fetch('/api/auth', {
-        method: 'POST',
+      const response = await fetch("/api/auth", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || 'Login failed');
+        throw new Error(data.error || "Login failed");
       }
 
       const { token } = await response.json();
-      localStorage.setItem('token', token);
-      router.push('/');
+      localStorage.setItem("token", token);
+      router.push("/");
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
+      setError(err instanceof Error ? err.message : "Login failed");
     }
   };
 
@@ -43,7 +43,10 @@ export default function LoginPage() {
         {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Username
             </label>
             <input
@@ -56,7 +59,10 @@ export default function LoginPage() {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Password
             </label>
             <input
@@ -76,7 +82,7 @@ export default function LoginPage() {
           </button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-600">
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <Link href="/register" className="text-blue-600 hover:underline">
             Register
           </Link>
